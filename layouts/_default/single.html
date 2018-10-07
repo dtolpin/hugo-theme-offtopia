@@ -5,10 +5,8 @@
         <a class="text-dark" href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>
     </h2>
     {{ with $.Param "subtitle" }}
-	<h3 class="blog-post-subtitle">{{ . | markdownify }}</h3>
+    <h3 class="blog-post-subtitle">{{ . | markdownify }}</h3>
     {{ end }}
-
-
     {{ partial "post-date" . }}
     {{ partial "post-tags" . }}
     {{ partial "post-categories" . }}
