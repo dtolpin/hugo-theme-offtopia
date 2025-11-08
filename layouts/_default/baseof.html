@@ -21,6 +21,8 @@
     {{ $style := resources.Get "css/style.css" | resources.Fingerprint }}
     <link href="{{ $style.Permalink }}" rel="stylesheet"{{ if not .Site.Params.disable_sri }} integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous"{{ end }}>
     {{ end }}
+    {{ $substyle := resources.Get "css/substyle.css" | resources.Fingerprint }}
+    <link href="{{ $substyle.Permalink }}" rel="stylesheet"{{ if not .Site.Params.disable_sri }} integrity="{{ $substyle.Data.Integrity }}" crossorigin="anonymous"{{ end }}>
 
     {{ "<!-- minified Font Awesome for SVG icons -->" | safeHTML }}
     {{ $fontawesome := resources.Get "js/fontawesome.min.js" | resources.Fingerprint }}
@@ -98,8 +100,12 @@
     </footer>
     {{ end }}
 
-  </body>
+    <!-- MathJax -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });</script>
 
+  </body>
 </html>
 
 {{- /* vim: set ts=2 sw=2 et: */}}
